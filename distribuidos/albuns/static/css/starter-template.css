@@ -1,7 +1,36 @@
 body {
     padding-top: 5rem;
-  }
-  .starter-template {
+}
+
+.starter-template {
     padding: 3rem 1.5rem;
     text-align: center;
-  }
+}
+
+  /* Featurettes
+------------------------- */
+
+.featurette-divider {
+  margin: 1rem 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -.05rem;
+}
+
+/* Footer
+-------------------------- */
+
+footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-top: 40px;
+  border-top: 1px solid #eee;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}

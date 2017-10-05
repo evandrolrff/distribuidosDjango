@@ -1,59 +1,72 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Trabalho de Sistemas Distribuídos</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
-    <link href="{% static 'css/bootstrap-reboot.css' %}" rel="stylesheet">
-    <link href="{% static 'css/bootstrap-grid.css' %}" rel="stylesheet">
+  <title>Trabalho de Sistemas Distribuídos</title>
 
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/starter-template.css' %}" rel="stylesheet">
-  </head>
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap-reboot.css' %}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap-grid.css' %}" rel="stylesheet">
 
-  <body>
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/starter-template.css' %}" rel="stylesheet">
+</head>
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="#">Trabalho</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">Trabalho</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+      aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'page_index' %}">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'list_albuns' %}">Álbuns</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'list_musicas' %}">Músicas</a>
-          </li>          
-        </ul>
-        <form class="form-inline my-2 my-lg-0" action="{% url 'admin:index' %}">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Admin</button>
-        </form>
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'page_index' %}">Home </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'list_albuns' %}">Álbuns</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'list_musicas' %}">Músicas</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0" action="{% url 'admin:index' %}">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Admin</button>
+      </form>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    {% block content %} {% endblock %}    
+  
+  </div>
+  
+  <div class="container">
+  <footer class="text-muted">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>        
       </div>
-    </nav>
-
-    <div class="container">
-
-        {% block content %} {% endblock %}
-    
-    </div><!-- /.container -->
-
-
-    <!-- Bootstrap core JavaScript
+    </footer>
+  </div>
+  
+  <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="{% static 'js/jquery-3.2.1.slim.min.js' %}"></script>
-    <script src="{% static 'js/popper.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.js' %}"></script>
-  </body>
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="{% static 'js/jquery-3.2.1.slim.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  <script src="{% static 'js/holder.min.js' %}"></script>
+</body>
+
 </html>
