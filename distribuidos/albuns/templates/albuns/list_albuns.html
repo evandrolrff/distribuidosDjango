@@ -1,44 +1,25 @@
 {% extends 'albuns/page_index.html' %} {% block content %}
-<div class="row row-offcanvas row-offcanvas-left">
-    <div class="row featurette">
-        <div class="col-6 col-lg-6 order-md-2">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
-                nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
-                odio dui. </p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-5 order-md-1">
-            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/280x280/auto" alt="Generic placeholder image">
-        </div>
-    </div>
+{% if albuns %}
+  {% for album in albuns %}
+  <div class="row featurette">
+      <div class="col-6 col-lg-6 order-md-2">
+          <h2>{{ album.nome }}</h2>
+          <p><h5>{{ album.data_lancamento }}</h5></p>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
+              nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
+              odio dui. </p>
+          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-5 order-md-1">
+          <img class="featurette-image img-fluid mx-auto" data-src= {{ albuns.image_src }} alt="Generic placeholder image">
+      </div>
+  </div>
 
-    <hr class="featurette-divider">
-    <div class="row featurette">
-        <div class="col-6 col-lg-6 order-md-2">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
-                nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
-                odio dui. </p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-5 order-md-1">
-            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/280x280/auto" alt="Generic placeholder image">
-        </div>
-    </div>
 
-    <hr class="featurette-divider">
-    <div class="row featurette">
-        <div class="col-6 col-lg-6 order-md-2">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
-                nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
-                odio dui. </p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-5 order-md-1">
-            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/280x280/auto" alt="Generic placeholder image">
-        </div>
-    </div>
+  {% endfor %}
+{% else %}
+  Nenhum registro.
+{% endif %}
+
 </div>
 {% endblock %}

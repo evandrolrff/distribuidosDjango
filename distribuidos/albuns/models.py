@@ -6,6 +6,7 @@ class Albuns(models.Model):
     nome = models.CharField(max_length=255)
     data_lancamento = models.DateField(blank=True, null=True)
     banda = models.CharField(max_length=255)
+    image_src = models.CharField(max_length=255, null=True)
 
     def __str__(self):
         return self.nome

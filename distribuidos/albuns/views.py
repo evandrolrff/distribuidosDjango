@@ -7,7 +7,16 @@ def page_index(request):
     return render(request, 'albuns/index.html', {})
 
 def list_albuns(request):
-    return render(request, 'albuns/list_albuns.html', {})
+    albuns = Albuns.objects.all()
+    context = {
+        'albuns' : albuns,
+    }
+    return render(request, 'albuns/list_albuns.html', context)
 
 def list_musicas(request):
-    return render(request, 'albuns/list_musicas.html', {})
+    musicas = Musica.objects.all()
+    context = {
+        'musicas': musicas,
+    }
+
+    return render(request, 'albuns/list_musicas.html', context)
