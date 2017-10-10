@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 
 
-class Albuns(models.Model):
+class Album(models.Model):
     nome = models.CharField(max_length=255)
     data_lancamento = models.DateField(blank=True, null=True)
     banda = models.CharField(max_length=255)
@@ -12,7 +12,7 @@ class Albuns(models.Model):
         return self.nome
 
 class Musica(models.Model):
-    album = models.ForeignKey('Albuns', models.SET_NULL, blank=True, null=True)
+    album = models.ForeignKey('Album', models.SET_NULL, blank=True, null=True)
     nome = models.CharField(max_length=255)
     duracao = models.TimeField()
 

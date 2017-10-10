@@ -1,4 +1,5 @@
-{% extends 'albuns/page_index.html' %} {% block content %}
+{% extends 'albuns/page_index.html' %}
+{% block content %}
 {% if albuns %}
   {% for album in albuns %}
   <div class="row featurette">
@@ -11,7 +12,7 @@
           <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
       </div>
       <div class="col-md-5 order-md-1">
-          <img class="featurette-image img-fluid mx-auto" data-src= {{ albuns.image_src }} alt="Generic placeholder image">
+          <img class="featurette-image img-fluid mx-auto" data-src= "{{ albuns.image_src }}" alt="Generic placeholder image">
       </div>
   </div>
 

@@ -7,7 +7,7 @@ def page_index(request):
     return render(request, 'albuns/index.html', {})
 
 def list_albuns(request):
-    albuns = Albuns.objects.all()
+    albuns = Album.objects.all()
     context = {
         'albuns' : albuns,
     }
