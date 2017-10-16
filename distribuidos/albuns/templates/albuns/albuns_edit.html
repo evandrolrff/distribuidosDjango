@@ -1,0 +1,21 @@
+{% extends 'albuns/page_index.html' %} {% block content %}
+<h1>Novo Álbum</h1>
+<div class="col-8">
+    <form method="post" action="/albuns_add/">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Nome</label>
+            <input name="nome" type="text" class="form-control" id="inputNome" placeholder="Nome Álbum">
+        </div>
+        <div class="form-group">
+            <label>Data de Lançamento</label>
+            <input name="data_lancamento" type="date" class="form-control col-6" id="inputDataLancamento">
+        </div>
+        <div class="form-group">
+                <label>Banda</label>
+                <input name="banda" type="text" class="form-control col-8" id="inputBanda" placeholder="Nome da Banda">
+            </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+</div>
+{% endblock %}

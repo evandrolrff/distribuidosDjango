@@ -1,25 +1,31 @@
-{% extends 'albuns/page_index.html' %} {% block content %}
-{% if musicas %}
-  {% for musica in musicas %}
-  <div class="row featurette">
-      <div class="col-6 col-lg-6 order-md-2">
-          <h2>{{ musica.nome }}</h2>
-          <p><h5>{{ musica.data_lancamento }}</h5></p>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
-              nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
-              odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-      </div>
-      <div class="col-md-5 order-md-1">
-          <img class="featurette-image img-fluid mx-auto" data-src= {{ albuns.image_src }} alt="Generic placeholder image">
-      </div>
-  </div>
-
-
-  {% endfor %}
-{% else %}
-  Nenhum registro.
-{% endif %}
-
+{% extends 'albuns/page_index.html' %} {% block content %} {% if musicas %}
+<div class="row">
+    <div class="col-md-10">
+        <h1 class="jumbotron-heading">Músicas</h1>
+    </div>
+    <div class="col-md-2">
+        <form class="form-inline my-2 my-lg-0" action="{% url 'musicas_new' %}">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Adicionar</button>
+        </form>
+    </div>
 </div>
-{% endblock %}
+<hr class="featurette-divider">
+ {% for musica in musicas %}
+<div class="row featurette">
+    <div class="col-6 col-lg-6 order-md-2">
+        <h2>{{ musica.nome }}</h2>
+        <p>
+            <h5>{{ musica.data_lancamento }}</h5>
+        </p>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
+            nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio
+            dui. </p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+    </div>
+    <div class="col-md-5 order-md-1">
+        <img class="featurette-image img-fluid mx-auto" data-src={ { albuns.image_src }} alt="Generic placeholder image">
+    </div>
+</div>
+
+
+{% endfor %} {% else %} Nenhum registro. {% endif %} {% endblock %}
