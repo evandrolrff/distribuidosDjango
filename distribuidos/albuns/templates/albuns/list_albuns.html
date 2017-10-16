@@ -14,12 +14,23 @@
     <div class="col-6 col-lg-6 order-md-2">
         <h2>{{ album.nome }}</h2>
         <p>
-            <h5>{{ album.data_lancamento }}</h5>
+            <h5>Lançamento {{ album.data_lancamento }}</h5>
         </p>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
-            nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio
-            dui. </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <p>
+            <h5>Banda {{ album.banda }}</h5>
+        </p>
+        <div class="row">        
+            <div class="col-auto mr-auto">
+                <p>
+                    <a class="btn btn-warning" href="{% url 'albuns_edit' pk=album.pk %}" role="button">Editar</a>
+                </p>
+            </div>
+            <div class="col-auto">
+                <p>
+                    <a class="btn btn-danger" href="" role="button">Excluir</a>
+                </p>
+            </div>
+        </div>
     </div>
     <div class="col-md-5 order-md-1">
         <img class="featurette-image img-fluid mx-auto" data-src="{{ album.image_src }}" alt="Generic placeholder image">

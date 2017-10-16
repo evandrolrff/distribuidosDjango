@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import *
+from .forms import *
 
 
 def page_index(request):
@@ -15,12 +16,52 @@ def list_musicas(request):
     return render(request, 'albuns/list_musicas.html', {'musicas': musicas})
 
 def albuns_new(request):
-    return render(request, 'albuns/albuns_edit.html', {})
+    if request.method == "POST":
+        form = AlbumForm(request.POST)
+        if form.is_valid():
+            album = form.save(commit=False)
+            album.save()
+            return redirect('/albuns/')
+    else:
+        form = AlbumForm()
+    return render(request, 'albuns/albuns_edit.html', {'form': form})
 
 def musicas_new(request):
-    albuns = Album.objects.all()
-    return render(request, 'albuns/musicas_edit.html', {'albuns': albuns})
+    if request.method == "POST":
+        form = MusicaForm(request.POST)
+        if form.is_valid():
+            musica = form.save(commit=False)
+            musica.save()
+            return redirect('/musicas/')
+    else:
+        form = MusicaForm()
+    return render(request, 'albuns/musicas_edit.html', {'form': form})
 
+def albuns_edit(request, pk):
+    album = get_object_or_404(Album, pk=pk)
+    if request.method == "POST":
+        form = AlbumForm(request.POST, instance=album)
+        if form.is_valid():
+            album = form.save(commit=False)
+            album.save()
+            return redirect('/albuns/')
+    else:
+        form = AlbumForm(instance=album)
+    return render(request, 'albuns/albuns_edit.html', {'form': form})
+
+def musicas_edit(request, pk):
+    musica = get_object_or_404(Musica, pk=pk)
+    if request.method == "POST":
+        form = AlbumForm(request.POST, instance=musica)
+        if form.is_valid():
+            musica = form.save(commit=False)
+            musica.save()
+            return redirect('/musicas/')
+    else:
+        form = MusicaForm(instance=musica)
+    return render(request, 'albuns/musicas_edit.html', {'form': form})
+
+#nao utilizado
 def albuns_add(request):
     nome_form = request.POST.get("nome")
     data_lancamento_form = request.POST.get("data_lancamento")
@@ -34,9 +75,9 @@ def albuns_add(request):
     album.save()
     return redirect('/albuns/')
 
+#nao utilizado
 def musicas_add(request):
     album_form = Album.objects.get(nome=request.POST.get("album"))
-    print(album_form)
     nome_form = request.POST.get("nome")
     duracao_form = request.POST.get("duracao")
 
@@ -47,3 +88,6 @@ def musicas_add(request):
     )
     musica.save()
     return redirect('/musicas/')
+
+#def musicas_edit(request):
+ #   pass'''

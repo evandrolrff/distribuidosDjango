@@ -10,4 +10,6 @@ urlpatterns = [
     url(r'^musicas/new/$', views.musicas_new, name='musicas_new'),
     url(r'^albuns_add/$', views.albuns_add, name='albuns_add'),
     url(r'^musicas_add/$', views.musicas_add, name='musicas_add'),
+    url(r'^albuns/(?P<pk>[0-9]+)/edit/$', views.albuns_edit, name='albuns_edit'),
+    url(r'^musicas/(?P<pk>[0-9]+)/edit/$', views.musicas_edit, name='musicas_edit'),
 ]

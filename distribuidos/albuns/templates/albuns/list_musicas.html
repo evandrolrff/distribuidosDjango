@@ -9,18 +9,28 @@
         </form>
     </div>
 </div>
-<hr class="featurette-divider">
- {% for musica in musicas %}
+<hr class="featurette-divider"> {% for musica in musicas %}
 <div class="row featurette">
     <div class="col-6 col-lg-6 order-md-2">
         <h2>{{ musica.nome }}</h2>
         <p>
-            <h5>{{ musica.data_lancamento }}</h5>
+            <h5>Tempo duração {{ musica.duracao }}</h5>
         </p>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
-            nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio
-            dui. </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <p>
+            <h5>Álbum {{ musica.album }}</h5>
+        </p>
+        <div class="row">
+            <div class="col-auto mr-auto">
+                <p>
+                    <a class="btn btn-warning" href="{% url 'musicas_edit' pk=musica.pk %}" role="button">Editar</a>
+                </p>
+            </div>
+            <div class="col-auto">
+                <p>
+                    <a class="btn btn-danger" href="" role="button">Excluir</a>
+                </p>
+            </div>
+        </div>
     </div>
     <div class="col-md-5 order-md-1">
         <img class="featurette-image img-fluid mx-auto" data-src={ { albuns.image_src }} alt="Generic placeholder image">
