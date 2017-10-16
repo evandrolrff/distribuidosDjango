@@ -61,6 +61,19 @@ def musicas_edit(request, pk):
         form = MusicaForm(instance=musica)
     return render(request, 'albuns/musicas_edit.html', {'form': form})
 
+def musicas_delete(request, pk, template_name='musicas_delete.html'):
+    musica = get_object_or_404(Musica, pk=pk)
+    musica.delete()
+    return redirect('list_musicas')
+
+def albuns_delete(request, pk, template_name='albuns_delete.html'):
+    album = get_object_or_404(Album, pk=pk)
+    musicas = Musica.objects.filter(album=pk)
+    for musica in musicas:
+        musica.delete()
+    album.delete()
+    return redirect('list_albuns')
+
 #nao utilizado
 def albuns_add(request):
     nome_form = request.POST.get("nome")

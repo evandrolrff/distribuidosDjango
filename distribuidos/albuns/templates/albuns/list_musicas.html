@@ -27,13 +27,13 @@
             </div>
             <div class="col-auto">
                 <p>
-                    <a class="btn btn-danger" href="" role="button">Excluir</a>
+                    <a class="btn btn-danger" href="{% url 'musicas_delete' pk=musica.pk %}" role="button">Excluir</a>
                 </p>
             </div>
         </div>
     </div>
     <div class="col-md-5 order-md-1">
-        <img class="featurette-image img-fluid mx-auto" data-src={ { albuns.image_src }} alt="Generic placeholder image">
+        <img src="{{ albuns.image_src }}" alt="Generic placeholder image">
     </div>
 </div>
 

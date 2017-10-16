@@ -1,0 +1,9 @@
+{% extends 'albuns/page_index.html' %} {% block content %}
+<h1>Remover Música</h1>
+<div class="col-8">
+  <form method="post">{% csrf_token %}
+    Tem certeza de que deseja remover "{{ object }}" ?
+  <input type="submit" value="Submit" />
+</form>
+</div>
+{% endblock %}
