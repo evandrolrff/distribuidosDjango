@@ -2,9 +2,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import *
 from .forms import *
+from .utils import *
 
 
 def page_index(request):
+    util()
     return render(request, 'albuns/index.html', {})
 
 def list_albuns(request):
@@ -101,6 +103,3 @@ def musicas_add(request):
     )
     musica.save()
     return redirect('/musicas/')
-
-#def musicas_edit(request):
- #   pass'''
