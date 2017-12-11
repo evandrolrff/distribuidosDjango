@@ -1,4 +1,4 @@
-{% extends 'albuns/page_index.html' %} {% block content %} {% if musicas %}
+{% extends 'albuns/page_index.html' %} {% block content %} {% if images %}
 <div class="row">
     <div class="col-md-10">
         <h1 class="jumbotron-heading">Músicas</h1>
@@ -9,7 +9,7 @@
         </form>
     </div>
 </div>
-<hr class="featurette-divider"> {% for musica in musicas %}
+<hr class="featurette-divider"> {% for image, musica in images %}
 <div class="row featurette">
     <div class="col-6 col-lg-6 order-md-2">
         <h2>{{ musica.nome }}</h2>
@@ -33,7 +33,7 @@
         </div>
     </div>
     <div class="col-md-5 order-md-1">
-        <img src="{{ albuns.image_src }}" alt="Generic placeholder image">
+        <img src="{{ image }}" alt="Generic placeholder image">
     </div>
 </div>
 
