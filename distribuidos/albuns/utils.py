@@ -1,7 +1,7 @@
 import pylast
 
 
-def util():
+def util(album, banda):
     # You have to have your own unique two values for API_KEY and API_SECRET
     # Obtain yours from https://www.last.fm/api/account/create for Last.fm
     API_KEY = "49fd609d03e8ad5b8c8d703e10364a70"  # this is a sample key
@@ -19,17 +19,17 @@ def util():
     #artist.shout("<3")
 
 
-    track = network.get_track("Iron Maiden", "The Nomad")
-    track.love()
-    track.add_tags(("awesome", "favorite"))
+#    track = network.get_track("Iron Maiden", "The Nomad")
+ #   track.love()
+  #  track.add_tags(("awesome", "favorite"))
     
     
     # Arrange
-    album = network.get_album("Gary Moore", "Ballads and Blues")
+    album = network.get_album(banda, album)
 
     # Act
-    image = album.get_cover_image()
-    print(type(image))
+    return album.get_cover_image()
+   # print(type(image))
 
     # Assert
     #network.assertTrue(image.startswith("https://"))

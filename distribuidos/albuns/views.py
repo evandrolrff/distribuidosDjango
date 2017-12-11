@@ -5,13 +5,16 @@ from .forms import *
 from .utils import *
 
 
-def page_index(request):
-    util()
+def page_index(request):    
     return render(request, 'albuns/index.html', {})
 
 def list_albuns(request):
     albuns = Album.objects.all()
-    return render(request, 'albuns/list_albuns.html', {'albuns': albuns})
+    images = [(util(album.nome, album.banda), album) for album in albuns]
+    context = {         
+        'images': images,
+    }
+    return render(request, 'albuns/list_albuns.html', context)
 
 def list_musicas(request):
     musicas = Musica.objects.all()
