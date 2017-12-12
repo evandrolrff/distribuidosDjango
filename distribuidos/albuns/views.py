@@ -21,7 +21,17 @@ def list_albuns(request):
 
 def list_musicas(request):
     musicas = Musica.objects.all()
-    return render(request, 'albuns/list_musicas.html', {'musicas': musicas})
+    images = [()]
+    for musica in musicas:
+        album = Album.objects.get(nome=musica.album)
+        images += [(util(musica.album, album.banda), musica)]
+    
+    images.pop(0)
+    print(images)
+    context = {
+        'images': images,
+    }
+    return render(request, 'albuns/list_musicas.html', context)
 
 def albuns_new(request):
     if request.method == "POST":
