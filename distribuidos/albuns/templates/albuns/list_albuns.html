@@ -1,4 +1,4 @@
-{% extends 'albuns/page_index.html' %} {% block content %} {% if images %}
+{% extends 'albuns/page_index.html' %} {% block content %}
 <div class="row">
     <div class="col-md-10">
         <h1 class="jumbotron-heading">Álbuns</h1>
@@ -9,7 +9,7 @@
         </form>
     </div>
 </div>
-<hr class="featurette-divider"> {% for image, album in images %}
+<hr class="featurette-divider"> {% if images %} {% for image, album in images %}
 <div class="row featurette">
     <div class="col-6 col-lg-6 order-md-2">
         <h2>{{ album.nome }}</h2>
