@@ -2,19 +2,22 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import *
 from .forms import *
-from .utils import *
+from SOAPpy import SOAPProxy
+import pylast, datetime
 
+API_KEY = "84453a10c7338560dfcac09506580889"
+API_SECRET = "481785e30b6d0cd1fe2bfcd75ecf2615"
+username = "juliopcrj"
+passwd_hash = "bf72a79ae17fccc1bfd53b377a431633"
+network = pylast.LastFMNetwork(api_key = API_KEY, api_secret = API_SECRET,
+    username = username, password_hash = passwd_hash)
 
-def page_index(request):    
+def page_index(request):
     return render(request, 'albuns/index.html', {})
 
 def list_albuns(request):
     albuns = Album.objects.all()
-    images = [(util(album.nome, album.banda), album) for album in albuns]
-    context = {         
-        'images': images,
-    }
-    return render(request, 'albuns/list_albuns.html', context)
+    return render(request, 'albuns/list_albuns.html', {'albuns': albuns})
 
 def list_musicas(request):
     musicas = Musica.objects.all()
@@ -91,6 +94,18 @@ def albuns_add(request):
         banda = banda_form
     )
     album.save()
+
+    alb = network.get_album(banda_form, nome_form)
+    songs = alb.get_tracks()
+#adding songs automatically via webservice
+    for i in songs:
+        musica = Musica(
+            album = nome_form,
+            nome = i.get_name(),
+            duracao = datetime.timedelta(secodnds= i.get_duration())
+        )
+        musica.save()
+
     return redirect('/albuns/')
 
 #nao utilizado
@@ -106,3 +121,6 @@ def musicas_add(request):
     )
     musica.save()
     return redirect('/musicas/')
+
+#def musicas_edit(request):
+ #   pass'''
